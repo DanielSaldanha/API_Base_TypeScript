@@ -1,0 +1,39 @@
+### Variáveis
+@baseUrl = http://localhost:3000/api
+
+### 1. Healthcheck
+GET {{baseUrl}}/health
+Content-Type: application/json
+
+### 2. Criar Usuário (POST)
+# @name createUser
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "João Silva",
+  "email": "joao.silva@example.com"
+}
+
+### 3. Listar Todos os Usuários (GET)
+GET {{baseUrl}}/users
+Content-Type: application/json
+
+### 4. Buscar Usuário por ID (GET)
+# Substitua pelo UUID gerado na criação
+@userId = {{createUser.response.body.id}}
+GET {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+### 5. Atualizar Usuário (PUT)
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+  "name": "João Silva Atualizado",
+  "email": "joao.atualizado@example.com"
+}
+
+### 6. Deletar Usuário (DELETE)
+DELETE {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
